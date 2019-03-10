@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B82818922332BF300D07617 /* DogTableCell.swift */; };
-		3B9929742232BE5400DCC78E /* DogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9929732232BE5400DCC78E /* DogEntry.swift */; };
 		3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9929752232C1BF00DCC78E /* MyDogViewController.swift */; };
+		3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA320B522354DCB00AA0418 /* DogEntry.swift */; };
 		3BB74D962233ED9300239DCB /* DogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB74D952233ED9300239DCB /* DogCollectionViewController.swift */; };
 		3BB74D982233EECD00239DCB /* DogCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB74D972233EECD00239DCB /* DogCollectionCell.swift */; };
 		3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE344D7223173C50023F132 /* AppDelegate.swift */; };
@@ -24,8 +24,8 @@
 
 /* Begin PBXFileReference section */
 		3B82818922332BF300D07617 /* DogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogTableCell.swift; sourceTree = "<group>"; };
-		3B9929732232BE5400DCC78E /* DogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEntry.swift; sourceTree = "<group>"; };
 		3B9929752232C1BF00DCC78E /* MyDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogViewController.swift; sourceTree = "<group>"; };
+		3BA320B522354DCB00AA0418 /* DogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEntry.swift; sourceTree = "<group>"; };
 		3BB74D952233ED9300239DCB /* DogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewController.swift; sourceTree = "<group>"; };
 		3BB74D972233EECD00239DCB /* DogCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionCell.swift; sourceTree = "<group>"; };
 		3BE344D4223173C50023F132 /* Dog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3BE344E92231744E0023F132 /* Dog.swift */,
-				3B9929732232BE5400DCC78E /* DogEntry.swift */,
+				3BA320B522354DCB00AA0418 /* DogEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,9 +180,9 @@
 				3BB74D982233EECD00239DCB /* DogCollectionCell.swift in Sources */,
 				3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */,
 				3BEBD8712232AE3200FB11E4 /* DogTableViewController.swift in Sources */,
+				3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */,
 				3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */,
 				3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */,
-				3B9929742232BE5400DCC78E /* DogEntry.swift in Sources */,
 				3BE344EA2231744E0023F132 /* Dog.swift in Sources */,
 				3BB74D962233ED9300239DCB /* DogCollectionViewController.swift in Sources */,
 			);
