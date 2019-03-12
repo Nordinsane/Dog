@@ -16,12 +16,14 @@ class DogTableViewController: UITableViewController {
     var index = 0
     let dogNameArray = ["Kalle", "Tjalle", "Bilbo", "Pluto", "Roffsan", "Balto", "Fido"]
     let dogImageArray = [#imageLiteral(resourceName: "Husky"), #imageLiteral(resourceName: "Bull"), #imageLiteral(resourceName: "Corgi"), #imageLiteral(resourceName: "Pitboard"), #imageLiteral(resourceName: "Shiba"), #imageLiteral(resourceName: "CutePup"), #imageLiteral(resourceName: "Pom")]
+    let dogColorArray = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange, UIColor.purple, UIColor.yellow, UIColor.magenta]
+    let dogTimerArray = ["", "", "", "", "", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        for index in 0..<6 {
-            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index])
+        
+        for index in 0..<2 {
+            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], dogTimer: dogTimerArray[index])
             dog.addDog(dog: apply)
         }
         print(dog)
@@ -56,6 +58,12 @@ class DogTableViewController: UITableViewController {
         
         cell.dogCellName.text = dog.entry(index: indexPath.row)?.name
         cell.dogCellDisplay.image = dog.entry(index: indexPath.row)?.image
+//        cell.cellBackgroundView.backgroundColor = dog.entry(index: indexPath.row)?.color
+        
+//        cell.dogCellDisplay.layer.cornerRadius = 20
+//        cell.dogCellDisplay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+//        cell.dogCellDisplay.layer.cornerRadius = 20
+//        cell.dogCellDisplay.layer.masksToBounds = true
 
         print(cell.dogCellName.text)
         
