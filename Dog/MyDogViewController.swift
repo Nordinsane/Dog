@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyDogViewController: UIViewController {
+class MyDogViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var dogName: UILabel!
@@ -17,6 +17,7 @@ class MyDogViewController: UIViewController {
     @IBOutlet weak var secondTimeDisplay: UILabel!
     @IBOutlet weak var firstWalkHistoryDisplay: UILabel!
     @IBOutlet weak var secondWalkHistoryDisplay: UILabel!
+    @IBOutlet weak var historyTableView: UITableView!
     
     var thisDog: DogEntry?
     
@@ -35,17 +36,32 @@ class MyDogViewController: UIViewController {
             thisDog?.walk = true
         }
         else if thisDog?.walk == true {
+            walkButton.isEnabled = false
             thisDog?.secondTimer = (String(hour) + " : " + String(minute))
             walkButton.setTitle("Take a Walk", for: .normal)
             secondTimeDisplay.text = thisDog?.secondTimer
             firstWalkHistoryDisplay.text = thisDog?.firstTimer
             secondWalkHistoryDisplay.text = thisDog?.secondTimer
+            let combinedTime = ((thisDog?.firstTimer ?? "none") + " | " + (thisDog?.secondTimer ?? "none"))
             thisDog?.walk = false
+            thisDog?.walkArray.append(combinedTime)
+            historyTableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.firstTimeDisplay.text = ""
+                self.secondTimeDisplay.text = ""
+                self.walkButton.isEnabled = true
+            }
         }
+        print(thisDog?.walkArray.count)
+        print(thisDog?.walkArray.last)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         if thisDog?.walk == true {
             walkButton.setTitle("Stop", for: .normal)
@@ -58,5 +74,21 @@ class MyDogViewController: UIViewController {
 //        dogImage.layer.masksToBounds = true
         dogImage.image = thisDog?.image
         dogName.text = thisDog?.name
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return thisDog?.walkArray.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! WalkHistoryTableCell
+        
+        cell.timeDisplay.text = thisDog?.walkArray[indexPath.row]
+        
+        return cell //4.
     }
 }

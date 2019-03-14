@@ -1,15 +1,16 @@
 //
-//  DogAddCell.swift
+//  WalkHistoryTableCell.swift
 //  Dog
 //
-//  Created by Kim Nordin on 2019-03-11.
+//  Created by Kim Nordin on 2019-03-14.
 //  Copyright © 2019 kim. All rights reserved.
 //
 
 import UIKit
 
-class DogAddCell: UITableViewCell {
+class WalkHistoryTableCell: UITableViewCell {
 
+    @IBOutlet weak var timeDisplay: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -23,7 +23,7 @@ class DogTableViewController: UITableViewController {
         super.viewDidLoad()
         
         for index in 0..<2 {
-            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false)
+            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false, walkArray: [""])
             dog.addDog(dog: apply)
         }
         print(dog)

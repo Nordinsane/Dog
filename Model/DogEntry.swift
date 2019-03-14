@@ -17,16 +17,18 @@ class DogEntry {
     var firstTimer: String
     var secondTimer: String
     var walk: Bool = false
+    var walkArray: [String]
 
     
     
-    init(name: String, image: UIImage, color: UIColor, firstTimer: String, secondTimer: String, walk: Bool) {
+    init(name: String, image: UIImage, color: UIColor, firstTimer: String, secondTimer: String, walk: Bool, walkArray: [String]) {
         self.name = name
         self.image = image
         self.color = color
         self.firstTimer = firstTimer
         self.secondTimer = secondTimer
         self.walk = walk
+        self.walkArray = walkArray
    }
     
 //    func startTimer() {

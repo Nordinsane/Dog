@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3B53551A2237ACCF001D577F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5355192237ACCF001D577F /* GoogleService-Info.plist */; };
+		3B664575223B00BB00F487D6 /* WalkHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */; };
 		3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B82818922332BF300D07617 /* DogTableCell.swift */; };
 		3B8567332237AF2F00116F2C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567312237AF2E00116F2C /* SignupViewController.swift */; };
 		3B8567342237AF2F00116F2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567322237AF2F00116F2C /* LoginViewController.swift */; };
 		3B8567382237B06400116F2C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567372237B06400116F2C /* StartViewController.swift */; };
-		3B8F9AC122371733003B037D /* DogAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F9AC022371733003B037D /* DogAddCell.swift */; };
 		3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9929752232C1BF00DCC78E /* MyDogViewController.swift */; };
 		3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA320B522354DCB00AA0418 /* DogEntry.swift */; };
 		3BB74D962233ED9300239DCB /* DogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB74D952233ED9300239DCB /* DogCollectionViewController.swift */; };
@@ -29,11 +29,11 @@
 
 /* Begin PBXFileReference section */
 		3B5355192237ACCF001D577F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkHistoryTableCell.swift; sourceTree = "<group>"; };
 		3B82818922332BF300D07617 /* DogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogTableCell.swift; sourceTree = "<group>"; };
 		3B8567312237AF2E00116F2C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		3B8567322237AF2F00116F2C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3B8567372237B06400116F2C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		3B8F9AC022371733003B037D /* DogAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAddCell.swift; sourceTree = "<group>"; };
 		3B9929752232C1BF00DCC78E /* MyDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogViewController.swift; sourceTree = "<group>"; };
 		3BA320B522354DCB00AA0418 /* DogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEntry.swift; sourceTree = "<group>"; };
 		3BB74D952233ED9300239DCB /* DogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewController.swift; sourceTree = "<group>"; };
@@ -104,9 +104,9 @@
 				3B8567322237AF2F00116F2C /* LoginViewController.swift */,
 				3B8567312237AF2E00116F2C /* SignupViewController.swift */,
 				3BE344E0223173C70023F132 /* LaunchScreen.storyboard */,
-				3B8F9AC022371733003B037D /* DogAddCell.swift */,
-				3B82818922332BF300D07617 /* DogTableCell.swift */,
+				3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */,
 				3BB74D972233EECD00239DCB /* DogCollectionCell.swift */,
+				3B82818922332BF300D07617 /* DogTableCell.swift */,
 				3BE344E3223173C70023F132 /* Info.plist */,
 				3B5355192237ACCF001D577F /* GoogleService-Info.plist */,
 			);
@@ -270,10 +270,10 @@
 				3BEBD8732232AFE800FB11E4 /* NewDogViewController.swift in Sources */,
 				3BB74D982233EECD00239DCB /* DogCollectionCell.swift in Sources */,
 				3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */,
+				3B664575223B00BB00F487D6 /* WalkHistoryTableCell.swift in Sources */,
 				3BEBD8712232AE3200FB11E4 /* DogTableViewController.swift in Sources */,
 				3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */,
 				3B8567332237AF2F00116F2C /* SignupViewController.swift in Sources */,
-				3B8F9AC122371733003B037D /* DogAddCell.swift in Sources */,
 				3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */,
 				3B8567382237B06400116F2C /* StartViewController.swift in Sources */,
 				3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */,
