@@ -38,13 +38,13 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func saveDog(_ sender: UIButton) {
-        let apply = DogEntry(name: dogNameEntry.text ?? "-", image: dogImagePreview.image ?? #imageLiteral(resourceName: "TempDog"), color: UIColor.gray, dogTimer: "")
+        let apply = DogEntry(name: dogNameEntry.text ?? "-", image: dogImagePreview.image ?? #imageLiteral(resourceName: "TempDog"), color: UIColor.gray, firstTimer: "", secondTimer: "", walk: false)
         dog?.addDog(dog: apply)
-        print(dog?.count)
     }
     
     @IBAction func cancelDog(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "saveDogSegue", sender: nil)
     }
     
     func openGallery() {

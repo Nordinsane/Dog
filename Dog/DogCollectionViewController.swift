@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class DogCollectionViewController: UICollectionViewController {
+class DogCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
 
     let myDogId = "getDogSegueId"
     let newDogId = "newDogSegueId"
@@ -18,24 +18,31 @@ class DogCollectionViewController: UICollectionViewController {
     let dogNameArray = ["Kalle", "Tjalle", "Bilbo", "Pluto", "Roffsan", "Balto", "Fido"]
     let dogImageArray = [#imageLiteral(resourceName: "Husky"), #imageLiteral(resourceName: "Bull"), #imageLiteral(resourceName: "Corgi"), #imageLiteral(resourceName: "Pitboard"), #imageLiteral(resourceName: "Shiba"), #imageLiteral(resourceName: "CutePup"), #imageLiteral(resourceName: "Pom")]
     let dogColorArray = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange, UIColor.purple, UIColor.yellow, UIColor.magenta]
-    let dogTimerArray = [Timer(), Timer(), Timer(), Timer(), Timer(), Timer(), Timer()]
+    let dogTimerArray = ["", "", "", "", "", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.delegate = self
+        
 //        for index in 0..<6 {
-//            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], timer: dogTimerArray[index])
+//            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false, walkArray: [""])
 //            dog.addDog(dog: apply)
 //        }
         print(dog)
         print(dog.count)
         
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+    self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
 //        cellBackgroundView.layer.cornerRadius = cellBackgroundView.frame.height/2
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func walkActionButton(_ sender: UIButton) {
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,25 +71,25 @@ class DogCollectionViewController: UICollectionViewController {
         
         cell.cellBackgroundView.layer.cornerRadius = 35
         cell.dogCellDisplay.layer.cornerRadius = 35
-        cell.dogCellDisplay.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cell.dogCellDisplay.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         cell.dogCellDisplay.layer.masksToBounds = true
         
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == myDogId {
-            
             guard let destination = segue.destination as? MyDogViewController else {return}
             guard let cell = sender as? UICollectionViewCell else {return}
             guard let indexPath = collectionView.indexPath(for: cell) else {return}
             guard let entry = dog.entry(index: indexPath.row) else {return}
             
             destination.thisDog = entry
-            
         }
+        
         if segue.identifier == newDogId {
             if let destination = segue.destination as? NewDogViewController   {
                 destination.dog = dog
