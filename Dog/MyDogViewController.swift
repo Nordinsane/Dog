@@ -27,18 +27,19 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
         let date = Date()
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
+        let second = calendar.component(.second, from: date)
         if thisDog?.walk == false {
             firstTimeDisplay.text = ""
             secondTimeDisplay.text = ""
-            thisDog?.firstTimer = (String(hour) + " : " + String(minute))
+            thisDog?.firstTimer = (String(hour) + " : " + String(minute) + " : " + String(second))
             firstTimeDisplay.text = thisDog?.firstTimer
             walkButton.setTitle("Stop", for: .normal)
             thisDog?.walk = true
         }
         else if thisDog?.walk == true {
             walkButton.isEnabled = false
-            thisDog?.secondTimer = (String(hour) + " : " + String(minute))
-            walkButton.setTitle("Take a Walk", for: .normal)
+            thisDog?.secondTimer = (String(hour) + " : " + String(minute) + " : " + String(second))
+            walkButton.setTitle("", for: .normal)
             secondTimeDisplay.text = thisDog?.secondTimer
             firstWalkHistoryDisplay.text = thisDog?.firstTimer
             secondWalkHistoryDisplay.text = thisDog?.secondTimer
@@ -46,7 +47,16 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
             thisDog?.walk = false
             thisDog?.walkArray.append(combinedTime)
             historyTableView.reloadData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+                           animations: {
+//                            self.walkButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+//                            self.walkButton.setTitle("+", for: .normal)
+//                            self.walkButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+            },
+                           completion: nil
+            );
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+                self.walkButton.setTitle("Take a Walk", for: .normal)
                 self.firstTimeDisplay.text = ""
                 self.secondTimeDisplay.text = ""
                 self.walkButton.isEnabled = true
@@ -88,7 +98,26 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! WalkHistoryTableCell
         
         cell.timeDisplay.text = thisDog?.walkArray[indexPath.row]
+        cell.timeDisplay.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         
+        if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-2) {
+            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+                           animations: {
+                            cell.timeDisplay.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            },
+                           completion: nil
+            );
+        }
+        
+        if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1) {
+            cell.timeDisplay.textColor = UIColor(red:1.00, green:0.45, blue:0.00, alpha:1.0)
+            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+                           animations: {
+                            cell.timeDisplay.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            },
+                           completion: nil
+            );
+        }
         return cell //4.
     }
 }

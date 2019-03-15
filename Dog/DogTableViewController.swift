@@ -15,14 +15,14 @@ class DogTableViewController: UITableViewController {
     let dog = Dog()
     var index = 0
     let dogNameArray = ["Kalle", "Tjalle", "Bilbo", "Pluto", "Roffsan", "Balto", "Fido"]
-    let dogImageArray = [#imageLiteral(resourceName: "Husky"), #imageLiteral(resourceName: "Bull"), #imageLiteral(resourceName: "Corgi"), #imageLiteral(resourceName: "Pitboard"), #imageLiteral(resourceName: "Shiba"), #imageLiteral(resourceName: "CutePup"), #imageLiteral(resourceName: "Pom")]
+    let dogImageArray = [#imageLiteral(resourceName: "Husky"), #imageLiteral(resourceName: "Pitboard"), #imageLiteral(resourceName: "Corgi"), #imageLiteral(resourceName: "Pom"), #imageLiteral(resourceName: "Shiba"), #imageLiteral(resourceName: "CutePup"), #imageLiteral(resourceName: "Pom")]
     let dogColorArray = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange, UIColor.purple, UIColor.yellow, UIColor.magenta]
     let dogTimerArray = ["", "", "", "", "", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for index in 0..<2 {
+        for index in 0..<4 {
             let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false, walkArray: [""])
             dog.addDog(dog: apply)
         }
