@@ -18,10 +18,14 @@ class DogEntry {
     var secondTimer: String
     var walk: Bool = false
     var walkArray: [String]
+    let title: String
+    var isImportant: Bool
+    var isFinished: Bool
+    
 
     
     
-    init(name: String, image: UIImage, color: UIColor, firstTimer: String, secondTimer: String, walk: Bool, walkArray: [String]) {
+    init(name: String, image: UIImage, color: UIColor, firstTimer: String, secondTimer: String, walk: Bool, walkArray: [String], title: String, isImportant: Bool, isFinished: Bool) {
         self.name = name
         self.image = image
         self.color = color
@@ -29,6 +33,9 @@ class DogEntry {
         self.secondTimer = secondTimer
         self.walk = walk
         self.walkArray = walkArray
+        self.title = title
+        self.isImportant = isImportant
+        self.isFinished = isFinished
    }
     
 //    func startTimer() {

@@ -13,6 +13,7 @@ class DogTableCell: UITableViewCell {
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var dogCellName: UILabel!
     @IBOutlet weak var dogCellDisplay: UIImageView!
+    @IBOutlet weak var dogTimerDisplay: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

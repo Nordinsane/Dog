@@ -13,55 +13,52 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var dogName: UILabel!
     @IBOutlet weak var walkButton: UIButton!
-    @IBOutlet weak var firstTimeDisplay: UILabel!
-    @IBOutlet weak var secondTimeDisplay: UILabel!
-    @IBOutlet weak var firstWalkHistoryDisplay: UILabel!
-    @IBOutlet weak var secondWalkHistoryDisplay: UILabel!
+    @IBOutlet weak var latestWalkDisplay: UILabel!
     @IBOutlet weak var historyTableView: UITableView!
     
     var thisDog: DogEntry?
     
     let calendar = Calendar.current
+    let format = DateFormatter()
     
     @IBAction func walkActionButton(_ sender: UIButton) {
+        format.dateFormat = "HH:mm:ss"
         let date = Date()
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let second = calendar.component(.second, from: date)
+        let formattedDate = format.string(from: date)
         if thisDog?.walk == false {
-            firstTimeDisplay.text = ""
-            secondTimeDisplay.text = ""
-            thisDog?.firstTimer = (String(hour) + " : " + String(minute) + " : " + String(second))
-            firstTimeDisplay.text = thisDog?.firstTimer
+            latestWalkDisplay.text = ""
+            thisDog?.firstTimer = (formattedDate)
+            latestWalkDisplay.text = thisDog?.firstTimer
+            latestWalkDisplay.textColor = UIColor(red:1.00, green:0.45, blue:0.00, alpha:1.0)
             walkButton.setTitle("Stop", for: .normal)
             thisDog?.walk = true
         }
         else if thisDog?.walk == true {
             walkButton.isEnabled = false
-            thisDog?.secondTimer = (String(hour) + " : " + String(minute) + " : " + String(second))
+            thisDog?.secondTimer = (formattedDate)
             walkButton.setTitle("", for: .normal)
-            secondTimeDisplay.text = thisDog?.secondTimer
-            firstWalkHistoryDisplay.text = thisDog?.firstTimer
-            secondWalkHistoryDisplay.text = thisDog?.secondTimer
             let combinedTime = ((thisDog?.firstTimer ?? "none") + " | " + (thisDog?.secondTimer ?? "none"))
+            latestWalkDisplay.text = combinedTime
+            latestWalkDisplay.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
             thisDog?.walk = false
             thisDog?.walkArray.append(combinedTime)
+            historyTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
             historyTableView.reloadData()
-            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
-                           animations: {
-//                            self.walkButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-//                            self.walkButton.setTitle("+", for: .normal)
-//                            self.walkButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
-            },
-                           completion: nil
-            );
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-                self.walkButton.setTitle("Take a Walk", for: .normal)
-                self.firstTimeDisplay.text = ""
-                self.secondTimeDisplay.text = ""
-                self.walkButton.isEnabled = true
-            }
+//            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+//                           animations: {
+//
+//            },
+//                           completion: nil
+//            );
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+//                self.walkButton.setTitle("Walk", for: .normal)
+//                self.latestWalkDisplay.text = ""
+//                self.walkButton.isEnabled = true
+//            }
+            walkButton.setTitle("Walk", for: .normal)
+            self.walkButton.isEnabled = true
         }
+        print(formattedDate + " formatted")
         print(thisDog?.walkArray.count)
         print(thisDog?.walkArray.last)
     }
@@ -73,21 +70,20 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
+        latestWalkDisplay.textColor = UIColor(red:1.00, green:0.45, blue:0.00, alpha:1.0)
+        
         if thisDog?.walk == true {
             walkButton.setTitle("Stop", for: .normal)
-            firstTimeDisplay.text = thisDog?.firstTimer
+            latestWalkDisplay.text = thisDog?.firstTimer
         }
         
-        firstWalkHistoryDisplay.text = thisDog?.firstTimer
-        secondWalkHistoryDisplay.text = thisDog?.secondTimer
+        walkButton.layer.cornerRadius = 30
+        walkButton.layer.masksToBounds = true
+        
 //        dogImage.layer.cornerRadius = 35
 //        dogImage.layer.masksToBounds = true
         dogImage.image = thisDog?.image
         dogName.text = thisDog?.name
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,9 +95,8 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
         
         cell.timeDisplay.text = thisDog?.walkArray[indexPath.row]
         cell.timeDisplay.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
-        
         if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-2) {
-            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
                            animations: {
                             cell.timeDisplay.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             },
@@ -111,7 +106,7 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
         
         if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1) {
             cell.timeDisplay.textColor = UIColor(red:1.00, green:0.45, blue:0.00, alpha:1.0)
-            UIView.animate(withDuration: 1.2, delay: 0.0, options: [],
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [],
                            animations: {
                             cell.timeDisplay.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             },

@@ -18,7 +18,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var dogImagePreview: UIButton!
     
     override func viewDidLoad() {
-        
+        isEditing = false
         super.viewDidLoad()
         
         saveDogButton.layer.cornerRadius = 25
@@ -37,7 +37,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func saveDog(_ sender: UIButton) {
         
-        let apply = DogEntry(name: dogNameEntry.text ?? "-", image: dogImagePreview.imageView?.image ?? #imageLiteral(resourceName: "TempDog"), color: UIColor.gray, firstTimer: "", secondTimer: "", walk: false, walkArray: [""])
+        let apply = DogEntry(name: dogNameEntry.text ?? "-", image: dogImagePreview.imageView?.image ?? #imageLiteral(resourceName: "TempDog"), color: UIColor.gray, firstTimer: "", secondTimer: "", walk: false, walkArray: [""], title: "pap", isImportant: false, isFinished: false)
         
         dog?.addDog(dog: apply)
     }

@@ -18,6 +18,8 @@ class SignupViewController: UIViewController {
     var userEmail: String = ""
     var userPassword: String = ""
     var userPasswordConfirm: String = ""
+    var db: Firestore!
+    var users =  [User]()
 
     @IBAction func signUpAction(_ sender: UIButton) {
         if passwordField.text != passwordConfirmField.text {
@@ -31,6 +33,18 @@ class SignupViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!){ (user, error) in
                 if error == nil {
                     self.performSegue(withIdentifier: "signUpSegue", sender: self)
+                    
+                    let mail = self.emailField.text
+                    
+                    let dbase = Firestore.firestore()
+                    
+                    let email = User(cred: mail ?? "")
+                    dbase.collection("users").addDocument(data: email.toAny())
+                    print(email)
+                    print(mail)
+//                    let majs = Item(name: "Majs")
+//                    self.db.collection("items").addDocument(data: majs.toAny())
+//                    itemsRef.addDocument(data: userEmail)
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

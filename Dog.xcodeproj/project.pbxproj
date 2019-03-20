@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2923BB223BA43100CA9DEF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2923BA223BA43100CA9DEF /* Item.swift */; };
 		3B53551A2237ACCF001D577F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B5355192237ACCF001D577F /* GoogleService-Info.plist */; };
 		3B664575223B00BB00F487D6 /* WalkHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */; };
 		3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B82818922332BF300D07617 /* DogTableCell.swift */; };
 		3B8567332237AF2F00116F2C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567312237AF2E00116F2C /* SignupViewController.swift */; };
 		3B8567342237AF2F00116F2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567322237AF2F00116F2C /* LoginViewController.swift */; };
 		3B8567382237B06400116F2C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567372237B06400116F2C /* StartViewController.swift */; };
+		3B8E733E223BEB1F00E65684 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E733D223BEB1F00E65684 /* User.swift */; };
 		3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9929752232C1BF00DCC78E /* MyDogViewController.swift */; };
 		3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA320B522354DCB00AA0418 /* DogEntry.swift */; };
+		3BC48439223FBEF700662B72 /* DogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC48438223FBEF700662B72 /* DogCollectionViewController.swift */; };
+		3BC4843B223FC05000662B72 /* DogCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4843A223FC05000662B72 /* DogCollectionCell.swift */; };
 		3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE344D7223173C50023F132 /* AppDelegate.swift */; };
 		3BE344DD223173C50023F132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE344DB223173C50023F132 /* Main.storyboard */; };
 		3BE344DF223173C70023F132 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE344DE223173C70023F132 /* Assets.xcassets */; };
@@ -26,14 +30,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B2923BA223BA43100CA9DEF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3B5355192237ACCF001D577F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkHistoryTableCell.swift; sourceTree = "<group>"; };
 		3B82818922332BF300D07617 /* DogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogTableCell.swift; sourceTree = "<group>"; };
 		3B8567312237AF2E00116F2C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		3B8567322237AF2F00116F2C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3B8567372237B06400116F2C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		3B8E733D223BEB1F00E65684 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B9929752232C1BF00DCC78E /* MyDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogViewController.swift; sourceTree = "<group>"; };
 		3BA320B522354DCB00AA0418 /* DogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEntry.swift; sourceTree = "<group>"; };
+		3BC48438223FBEF700662B72 /* DogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewController.swift; sourceTree = "<group>"; };
+		3BC4843A223FC05000662B72 /* DogCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionCell.swift; sourceTree = "<group>"; };
 		3BE344D4223173C50023F132 /* Dog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE344D7223173C50023F132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BE344DC223173C50023F132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,8 +99,10 @@
 		3BE344D6223173C50023F132 /* Dog */ = {
 			isa = PBXGroup;
 			children = (
-				3BEBD8702232AE3200FB11E4 /* DogTableViewController.swift */,
+				3B2923BA223BA43100CA9DEF /* Item.swift */,
 				3BE344D7223173C50023F132 /* AppDelegate.swift */,
+				3BC48438223FBEF700662B72 /* DogCollectionViewController.swift */,
+				3BEBD8702232AE3200FB11E4 /* DogTableViewController.swift */,
 				3B9929752232C1BF00DCC78E /* MyDogViewController.swift */,
 				3BEBD8722232AFE800FB11E4 /* NewDogViewController.swift */,
 				3B8567372237B06400116F2C /* StartViewController.swift */,
@@ -101,6 +111,7 @@
 				3BE344E0223173C70023F132 /* LaunchScreen.storyboard */,
 				3B664574223B00BB00F487D6 /* WalkHistoryTableCell.swift */,
 				3B82818922332BF300D07617 /* DogTableCell.swift */,
+				3BC4843A223FC05000662B72 /* DogCollectionCell.swift */,
 				3BE344E3223173C70023F132 /* Info.plist */,
 				3B5355192237ACCF001D577F /* GoogleService-Info.plist */,
 			);
@@ -112,6 +123,7 @@
 			children = (
 				3BE344E92231744E0023F132 /* Dog.swift */,
 				3BA320B522354DCB00AA0418 /* DogEntry.swift */,
+				3B8E733D223BEB1F00E65684 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,8 +225,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Dog/Pods-Dog-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -222,8 +238,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -261,17 +281,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8E733E223BEB1F00E65684 /* User.swift in Sources */,
 				3BEBD8732232AFE800FB11E4 /* NewDogViewController.swift in Sources */,
 				3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */,
 				3B664575223B00BB00F487D6 /* WalkHistoryTableCell.swift in Sources */,
 				3BEBD8712232AE3200FB11E4 /* DogTableViewController.swift in Sources */,
+				3B2923BB223BA43100CA9DEF /* Item.swift in Sources */,
 				3BA320B622354DCB00AA0418 /* DogEntry.swift in Sources */,
 				3B8567332237AF2F00116F2C /* SignupViewController.swift in Sources */,
 				3B82818A22332BF300D07617 /* DogTableCell.swift in Sources */,
 				3B8567382237B06400116F2C /* StartViewController.swift in Sources */,
 				3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */,
 				3BE344EA2231744E0023F132 /* Dog.swift in Sources */,
+				3BC4843B223FC05000662B72 /* DogCollectionCell.swift in Sources */,
 				3B8567342237AF2F00116F2C /* LoginViewController.swift in Sources */,
+				3BC48439223FBEF700662B72 /* DogCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

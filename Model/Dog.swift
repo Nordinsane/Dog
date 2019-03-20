@@ -11,7 +11,7 @@ import UIKit
 
 class Dog {
     
-    private var list = [DogEntry]()
+    var list = [DogEntry]()
     
     var count : Int {
         return list.count
@@ -19,6 +19,10 @@ class Dog {
     
     func addDog(dog: DogEntry) {
         list.append(dog)
+    }
+    
+    func deleteDog(index: Int){
+        list.remove(at: index)
     }
     
     func entry(index: Int) -> DogEntry? {
