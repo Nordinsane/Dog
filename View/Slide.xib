@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Slide" customModule="Dog" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bull" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgl-4K-pIN">
+                    <rect key="frame" x="0.0" y="86" width="414" height="338"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Fgl-4K-pIN" secondAttribute="height" multiplier="207:169" id="ZBb-XU-zJ9"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="0dR-8T-Weo">
+                    <rect key="frame" x="20" y="514" width="374" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="LIj-6B-hPn">
+                    <rect key="frame" x="20" y="573.5" width="374" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0dR-8T-Weo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="98J-YI-Nhk"/>
+                <constraint firstItem="0dR-8T-Weo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9ed-t1-7Ft"/>
+                <constraint firstItem="Fgl-4K-pIN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="C4B-dJ-SCX"/>
+                <constraint firstItem="LIj-6B-hPn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="D5n-g0-X2p"/>
+                <constraint firstItem="Fgl-4K-pIN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="42" id="Ogf-z9-LSa"/>
+                <constraint firstItem="Fgl-4K-pIN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qku-Fv-bjc"/>
+                <constraint firstItem="LIj-6B-hPn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TQP-cY-cmu"/>
+                <constraint firstItem="LIj-6B-hPn" firstAttribute="top" secondItem="0dR-8T-Weo" secondAttribute="bottom" constant="28" id="WDu-KZ-gXk"/>
+                <constraint firstItem="Fgl-4K-pIN" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Wci-sT-GRE"/>
+                <constraint firstItem="LIj-6B-hPn" firstAttribute="top" secondItem="0dR-8T-Weo" secondAttribute="bottom" constant="28" id="eTG-yP-zpM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LIj-6B-hPn" secondAttribute="trailing" constant="20" id="fej-xx-We5"/>
+                <constraint firstItem="0dR-8T-Weo" firstAttribute="top" secondItem="Fgl-4K-pIN" secondAttribute="bottom" constant="90" id="nEM-HM-yof"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0dR-8T-Weo" secondAttribute="trailing" constant="20" id="vBt-VJ-laf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="Fgl-4K-pIN" id="Eyu-fP-hFD"/>
+                <outlet property="textDisplay" destination="LIj-6B-hPn" id="8fC-Yv-4yB"/>
+                <outlet property="titleDisplay" destination="0dR-8T-Weo" id="3GC-Ry-Ytw"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="127.23214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bull" width="300" height="168"/>
+    </resources>
+</document>

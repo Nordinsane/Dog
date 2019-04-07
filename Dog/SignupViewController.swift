@@ -38,9 +38,9 @@ class SignupViewController: UIViewController {
                     
                     let dbase = Firestore.firestore()
                     
-                    let email = User(cred: mail ?? "")
-                    dbase.collection("users").addDocument(data: email.toAny())
-                    print(email)
+//                    let email = User(cred: mail ?? "")
+//                    dbase.collection("users").addDocument(data: email.toAny())
+//                    print(email)
                     print(mail)
 //                    let majs = Item(name: "Majs")
 //                    self.db.collection("items").addDocument(data: majs.toAny())

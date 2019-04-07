@@ -16,7 +16,7 @@ class DogCollectionViewController: UIViewController, UICollectionViewDataSource,
     let dogTimerArray = ["", "", "", "", "", "", ""]
     var index = 0
     
-    let dog = Dog()
+    let dog = Dogs()
     var thisDog = [DogEntry]()
     
     @IBOutlet weak var dogCollectionView: UICollectionView!
@@ -27,8 +27,10 @@ class DogCollectionViewController: UIViewController, UICollectionViewDataSource,
         dogCollectionView.delegate = self
         dogCollectionView.dataSource = self
         
+        
+        
         for index in 0..<4 {
-            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false, walkArray: [""], title: "va", isImportant: false, isFinished: false)
+            let apply = DogEntry(name: dogNameArray[index], image: "", firstTimer: "", secondTimer: "", walking: false, walkArray: [""])
             dog.addDog(dog: apply)
         }
     }
@@ -40,7 +42,7 @@ class DogCollectionViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dogcell", for: indexPath) as! DogCollectionCell
-        cell.dogCellDisplay.image = dog.entry(index: indexPath.row)?.image
+        cell.dogCellDisplay.image = #imageLiteral(resourceName: "Doge")
         
         cell.layer.cornerRadius = 35
         cell.layer.masksToBounds = true

@@ -7,16 +7,20 @@
 //
 
 import Foundation
+import Firebase
 
 class User {
     
-    var cred: String
+    let uid: String
+    let email: String
     
-    init(cred: String) {
-        self.cred = cred
+    init(authData: Firebase.User) {
+        uid = authData.uid
+        email = authData.email!
     }
     
-    func toAny() -> [String: Any] {
-        return ["cred" : cred]
+    init(uid: String, email: String) {
+        self.uid = uid
+        self.email = email
     }
 }

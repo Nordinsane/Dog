@@ -10,6 +10,7 @@ import UIKit
 
 class DogTableCell: UITableViewCell {
 
+    @IBOutlet weak var dogStatusDisplay: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var dogCellName: UILabel!
     @IBOutlet weak var dogCellDisplay: UIImageView!

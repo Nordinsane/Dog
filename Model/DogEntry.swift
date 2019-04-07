@@ -7,36 +7,43 @@
 //
 
 import Foundation
+import Firebase
 import UIKit
 
 class DogEntry {
     
     var name: String
-    var image: UIImage
-    var color: UIColor
+    var image: String
     var firstTimer: String
     var secondTimer: String
-    var walk: Bool = false
+    var walking: Bool = false
     var walkArray: [String]
-    let title: String
-    var isImportant: Bool
-    var isFinished: Bool
+    var id: String = ""
+ 
     
-
-    
-    
-    init(name: String, image: UIImage, color: UIColor, firstTimer: String, secondTimer: String, walk: Bool, walkArray: [String], title: String, isImportant: Bool, isFinished: Bool) {
+    init(name: String, image: String, firstTimer: String, secondTimer: String, walking: Bool, walkArray: [String]) {
         self.name = name
         self.image = image
-        self.color = color
         self.firstTimer = firstTimer
         self.secondTimer = secondTimer
-        self.walk = walk
+        self.walking = walking
         self.walkArray = walkArray
-        self.title = title
-        self.isImportant = isImportant
-        self.isFinished = isFinished
    }
+    
+    init(snapshot: QueryDocumentSnapshot) {
+        let snapshotValue = snapshot.data() as [String : Any]
+        name = snapshotValue["name"] as! String
+        image = snapshotValue["image"] as! String
+        firstTimer = snapshotValue["firstTimer"] as! String
+        secondTimer = snapshotValue["secondTimer"] as! String
+        walking = snapshotValue["walking"] as! Bool
+        walkArray = snapshotValue["walkArray"] as! [String]
+        id = snapshot.documentID
+    }
+    
+    func toAny() -> [String: Any] {
+        return ["name": name, "image": image, "firstTimer": firstTimer, "secondTimer": secondTimer, "walking": walking, "walkArray": walkArray]
+    }
     
 //    func startTimer() {
 //        if(totalTime == 0) {

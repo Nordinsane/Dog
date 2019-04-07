@@ -11,21 +11,26 @@ import Firebase
 
 class DogTableViewController: UITableViewController {
     
+    var db: Firestore!
+    var auth: Auth!
     let myDogId = "getDogSegueId"
     let newDogId = "newDogSegueId"
     let logoutId = "logoutUserSegue"
-    let dog = Dog()
+    let dogs = Dogs()
     var index = 0
     let dogNameArray = ["Kalle", "Tjalle", "Bilbo", "Pluto", "Roffsan", "Balto", "Fido"]
     let dogImageArray = [#imageLiteral(resourceName: "Husky"), #imageLiteral(resourceName: "Pitboard"), #imageLiteral(resourceName: "Corgi"), #imageLiteral(resourceName: "Pom"), #imageLiteral(resourceName: "Shiba"), #imageLiteral(resourceName: "CutePup"), #imageLiteral(resourceName: "Pom")]
     let dogColorArray = [UIColor.red, UIColor.blue, UIColor.green, UIColor.orange, UIColor.purple, UIColor.yellow, UIColor.magenta]
     let dogTimerArray = ["", "", "", "", "", "", ""]
-    var items =  [Item]()
     var users =  [User]()
     var thisDog = [DogEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        db = Firestore.firestore()
+        auth = Auth.auth()
         
         isEditing = false
 
@@ -56,13 +61,28 @@ class DogTableViewController: UITableViewController {
 //        print(itemsRef.key)  // prints: "grocery-items"
 //        print(milkRef.key)   // prints: "milk"
 //
+        guard let user = auth.currentUser else {return}
+
+        let dogsRef = db.collection("users").document(user.uid).collection("dogs")
         
-        for index in 0..<4 {
-            let apply = DogEntry(name: dogNameArray[index], image: dogImageArray[index], color: dogColorArray[index], firstTimer: "", secondTimer: "", walk: false, walkArray: [""], title: "va", isImportant: false, isFinished: false)
-            dog.addDog(dog: apply)
+        dogsRef.addSnapshotListener() {
+            (snapshot, err) in
+            self.dogs.clearDog()
+
+            for document in snapshot!.documents {
+               let dog = DogEntry(snapshot: document)
+                print(dog.name)
+                self.dogs.addDog(dog: dog)
+            }
+            self.tableView.reloadData()
         }
-        print(dog)
-        print(dog.count)
+
+
+//        for index in 0..<4 {
+//            let apply = DogEntry(name: dogNameArray[index], image: "", firstTimer: "", secondTimer: "", walking: false, walkArray: [""])
+//            dog.addDog(dog: apply)
+//        }
+        print(dogs.count)
         
 //        let dbase = Firestore.firestore()
 //
@@ -109,7 +129,7 @@ class DogTableViewController: UITableViewController {
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
             
-            self.dog.deleteDog(index: indexPath.row)
+            self.dogs.deleteDog(index: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
@@ -130,9 +150,9 @@ class DogTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let itemToMove = dog.list[sourceIndexPath.row]
-        dog.deleteDog(index: sourceIndexPath.row)
-        dog.list.insert(itemToMove, at: destinationIndexPath.row)
+        let itemToMove = dogs.list[sourceIndexPath.row]
+        dogs.deleteDog(index: sourceIndexPath.row)
+        dogs.list.insert(itemToMove, at: destinationIndexPath.row)
         tableView.reloadData()
     }
     
@@ -147,7 +167,7 @@ class DogTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dog.count
+        return dogs.count
     }
     
     
@@ -155,18 +175,40 @@ class DogTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DogTableCell
         
-        cell.dogCellName.text = dog.entry(index: indexPath.row)?.name
-        cell.dogCellDisplay.image = dog.entry(index: indexPath.row)?.image
-        cell.dogTimerDisplay.text = dog.entry(index: indexPath.row)?.walkArray.last
-//        cell.cellBackgroundView.backgroundColor = dog.entry(index: indexPath.row)?.color
+        let dogimage = dogs.entry(index: indexPath.row)?.image
         
-
+        if let image = dogimage {
+            guard let url = URL(string: image) else {print("bad url"); return UITableViewCell()}
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.dogCellDisplay.image = UIImage(data: data!)
+                }
+            }).resume()
+        }
+        
+        cell.dogCellName.text = dogs.entry(index: indexPath.row)?.name
+        
+//        cell.cellBackgroundView.backgroundColor = dog.entry(index: indexPath.row)?.color
+        if dogs.entry(index: indexPath.row)?.walking == true {
+            cell.dogStatusDisplay.text = "Walking"
+            cell.dogTimerDisplay.text = dogs.entry(index: indexPath.row)?.firstTimer ?? ""
+        }
+        else if dogs.entry(index: indexPath.row)?.walking == false {
+            cell.dogTimerDisplay.text = dogs.entry(index: indexPath.row)?.walkArray.last ?? ""
+            cell.dogStatusDisplay.text = "Latest Walk"
+        }
         cell.dogCellDisplay.layer.cornerRadius = cell.dogCellDisplay.frame.height/2
         cell.dogCellDisplay.layer.shadowPath = UIBezierPath(rect: cell.dogCellDisplay.bounds).cgPath
+        cell.dogCellDisplay.layer.masksToBounds = true
 
 //        cell.dogCellDisplay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
 //        cell.dogCellDisplay.layer.cornerRadius = 20
-        cell.dogCellDisplay.layer.masksToBounds = true
 
         print(cell.dogCellName.text)
         
@@ -181,14 +223,14 @@ class DogTableViewController: UITableViewController {
             guard let destination = segue.destination as? MyDogViewController else {return}
             guard let cell = sender as? UITableViewCell else {return}
             guard let indexPath = tableView.indexPath(for: cell) else {return}
-            guard let entry = dog.entry(index: indexPath.row) else {return}
+            guard let entry = dogs.entry(index: indexPath.row) else {return}
             
             destination.thisDog = entry
             
         }
         else if segue.identifier == newDogId {
             if let destination = segue.destination as? NewDogViewController   {
-                destination.dog = dog
+                destination.dogs = dogs
             }
         }
     }
