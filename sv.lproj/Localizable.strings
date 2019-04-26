@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Dog
+
+  Created by Kim Nordin on 2019-04-26.
+  Copyright © 2019 kim. All rights reserved.
+*/
+"Walk" = "Gå";
+"Stop" = "Stop";
+"Have we met!?" = "Har vi träffats!?";
+

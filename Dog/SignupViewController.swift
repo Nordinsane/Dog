@@ -11,9 +11,11 @@ import Firebase
 
 class SignupViewController: UIViewController {
     
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
+    @IBOutlet weak var textLabel: UILabel!
     
     var userEmail: String = ""
     var userPassword: String = ""
@@ -33,18 +35,7 @@ class SignupViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!){ (user, error) in
                 if error == nil {
                     self.performSegue(withIdentifier: "signUpSegue", sender: self)
-                    
                     let mail = self.emailField.text
-                    
-                    let dbase = Firestore.firestore()
-                    
-//                    let email = User(cred: mail ?? "")
-//                    dbase.collection("users").addDocument(data: email.toAny())
-//                    print(email)
-                    print(mail)
-//                    let majs = Item(name: "Majs")
-//                    self.db.collection("items").addDocument(data: majs.toAny())
-//                    itemsRef.addDocument(data: userEmail)
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -59,9 +50,32 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        emailField.attributedPlaceholder = NSAttributedString(string: "E-Mail", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
+        passwordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
+        passwordConfirmField.attributedPlaceholder = NSAttributedString(string: "Re- Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
+        
+        signUpButton.backgroundColor = UIColor(red: 255/255, green: 116/255, blue: 0/255, alpha: 0.8)
+        emailField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
+        passwordField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
+        passwordConfirmField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
 
+        emailField.layer.cornerRadius = 20
+        passwordField.layer.cornerRadius = 20
+        passwordConfirmField.layer.cornerRadius = 20
         passwordField.isSecureTextEntry = true
         passwordConfirmField.isSecureTextEntry = true
+        signUpButton.layer.cornerRadius = 30
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

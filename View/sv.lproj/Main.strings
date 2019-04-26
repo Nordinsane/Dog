@@ -1,0 +1,75 @@
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "84w-L4-iDi"; */
+"84w-L4-iDi.placeholder" = "Lösenord";
+
+/* Class = "UIButton"; normalTitle = "DONE"; ObjectID = "8Fv-s2-inr"; */
+"8Fv-s2-inr.normalTitle" = "KLAR";
+
+/* Class = "UILabel"; text = "Have we met!?"; ObjectID = "B5o-HH-f8M"; */
+"B5o-HH-f8M.text" = "Har vi träffats!?";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "D9X-cc-CrN"; */
+"D9X-cc-CrN.text" = "Har du inget konto?";
+
+/* Class = "UINavigationItem"; title = "My Dogs"; ObjectID = "DAL-GB-GTn"; */
+"DAL-GB-GTn.title" = "Mina Hundar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fer-UN-z99"; */
+"Fer-UN-z99.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Facebook"; ObjectID = "Hhb-9Q-aUk"; */
+"Hhb-9Q-aUk.normalTitle" = "Facebook";
+
+/* Class = "UIButton"; normalTitle = "Walk"; ObjectID = "L2D-Q7-oaK"; */
+"L2D-Q7-oaK.normalTitle" = "Gå";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "P4f-iP-u5P"; */
+"P4f-iP-u5P.normalTitle" = "Bli Medlem";
+
+/* Class = "UITextField"; placeholder = "E-Mail"; ObjectID = "VxG-FR-j88"; */
+"VxG-FR-j88.placeholder" = "E-Mail";
+
+/* Class = "UITextField"; placeholder = "Dog Name"; ObjectID = "XcA-99-JYG"; */
+"XcA-99-JYG.placeholder" = "Hund Namn";
+
+/* Class = "UITextField"; placeholder = "Re- Password"; ObjectID = "Zed-ao-zPm"; */
+"Zed-ao-zPm.placeholder" = "Ange Lösenordet Igen";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "axh-cW-6r2"; */
+"axh-cW-6r2.title" = "Logga ut";
+
+/* Class = "UIViewController"; title = "Authentication"; ObjectID = "bSR-yr-ix7"; */
+"bSR-yr-ix7.title" = "Authentication";
+
+/* Class = "UIViewController"; title = "Sign Up"; ObjectID = "d4X-Rv-UXu"; */
+"d4X-Rv-UXu.title" = "Bli Medlem";
+
+/* Class = "UILabel"; text = "goDog"; ObjectID = "f2h-D8-bfT"; */
+"f2h-D8-bfT.text" = "goDog";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "guT-ps-jwU"; */
+"guT-ps-jwU.normalTitle" = "AVBRYT";
+
+/* Class = "UITextField"; placeholder = "E-Mail"; ObjectID = "mex-SN-lBP"; */
+"mex-SN-lBP.placeholder" = "E-Mail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pUZ-2P-3Y6"; */
+"pUZ-2P-3Y6.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qfy-2y-mwC"; */
+"qfy-2y-mwC.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Add Existing Dog"; ObjectID = "qv3-SS-Awl"; */
+"qv3-SS-Awl.normalTitle" = "Add Existing Dog";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "skU-hw-IUd"; */
+"skU-hw-IUd.normalTitle" = "Bli Medlem";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "w9n-sI-IML"; */
+"w9n-sI-IML.placeholder" = "Lösenord";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "xrb-tz-6nW"; */
+"xrb-tz-6nW.normalTitle" = "Logga In";
+
+/* Class = "UIViewController"; title = "Add New Dog"; ObjectID = "zQN-MS-jX6"; */
+"zQN-MS-jX6.title" = "Ny Hund";

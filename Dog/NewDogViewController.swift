@@ -14,26 +14,40 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     var db: Firestore!
     var auth: Auth!
     var storage: Storage!
-    var canCreateDog = false
+    var imageSet = false
     var dogs : Dogs?
+    var thisDog: DogEntry?
 
     @IBOutlet weak var dogNameEntry: UITextField!
     @IBOutlet weak var saveDogButton: UIButton!
     @IBOutlet weak var cancelDogButton: UIButton!
     @IBOutlet weak var dogImagePreview: UIButton!
+    @IBOutlet weak var backView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dogImagePreview.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.0)
+        blur()
         
         storage = Storage.storage()
         db = Firestore.firestore()
         auth = Auth.auth()
         
+        dogNameEntry.text = nil
         isEditing = false
-        canCreateDog = true
-        saveDogButton.layer.cornerRadius = 25
-        cancelDogButton.layer.cornerRadius = 25
+        saveDogButton.layer.cornerRadius = 30
+        cancelDogButton.layer.cornerRadius = 30
         dogNameEntry.becomeFirstResponder()
+    }
+    
+    func blur() {
+        let darkBlur = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        
+        let blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = backView.bounds
+        
+        backView.addSubview(blurView)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -46,7 +60,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func saveDog(_ sender: UIButton) {
-        if(canCreateDog == true) {
+        if(canCreateDog() == true) {
             guard let user = auth.currentUser else {return}
             
             let storageRef = storage.reference()
@@ -66,25 +80,68 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
                     guard let downloadUrl = url else {return}
                     if let name = self.dogNameEntry.text {
                         
-                        let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""])
+                        let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""], shareId: "")
                         dogsRef.addDocument(data: dog.toAny())
                     }
                 }
             }
-        
-            
-            
         }
-        canCreateDog = false
     }
     
     @IBAction func cancelDog(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        self.performSegue(withIdentifier: "saveDogSegue", sender: nil)
+        print("sup")
+    }
+    
+    // * CURRENTLY NOT IN USE* //
+    @IBAction func addExistingDog(_ sender: UIButton) {
+//        if let dogName = dogNameEntry.text {
+//            guard let user = auth.currentUser else {return}
+//
+//            let storageRef = storage.reference()
+//            let publicRef = db.collection("public-dogs").whereField("shareId", isEqualTo: dogName)
+//            let dogsRef = db.collection("users").document(user.uid).collection("dogs")
+//
+//        }
+//        --------
+//            publicRef.getDocuments { (snapshot, error) in
+//                if error != nil {
+//                    print(error)
+//                    print("BARG")
+//                }
+//                else {
+//                    print(dogName)
+//                    for document in (snapshot?.documents)! {
+//                        if let name = document.data()["name"] as? String {
+//                            if let image = document.data()["image"] as? String {
+//                                if let firstTimer = document.data()["firstTimer"] as? String {
+//                                    if let secondTimer = document.data()["secondTimer"] as? String {
+//                                        if let walking = document.data()["walking"] as? Bool {
+//                                            if let walkArray = document.data()["walkArray"] as? [String] {
+//                                                if let shareId = document.data()["shareId"] as? String {
+//                                                let dog = DogEntry(name: name, image: image, firstTimer: firstTimer, secondTimer: secondTimer, walking: walking, walkArray: walkArray, shareId: shareId)
+//
+//                                                    dogsRef.addDocument(data: dog.toAny())
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+            
+//            --------
+    }
+    
+    // * Decides wether a Dog can be created or not * //
+    func canCreateDog() -> Bool {
+        if dogNameEntry.text == "" || imageSet == false {
+            return false
+        }
+        else { return true }
     }
     
     func openGallery() {
-        
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
         myPickerController.sourceType =
@@ -94,15 +151,22 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        
         picker.dismiss(animated: true)
         
         guard let image = info[.editedImage] as? UIImage else {
-            
             print("No image found")
             return
         }
-        
+        imageSet = true
         dogImagePreview.setImage(image, for: .normal)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

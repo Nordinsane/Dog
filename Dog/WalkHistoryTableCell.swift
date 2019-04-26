@@ -2,7 +2,7 @@
 //  WalkHistoryTableCell.swift
 //  Dog
 //
-//  Created by Kim Nordin on 2019-03-14.
+//  Created by Kim Nordin on 2019-04-17.
 //  Copyright © 2019 kim. All rights reserved.
 //
 
