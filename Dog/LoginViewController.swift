@@ -93,12 +93,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordField.text = ""
         super.viewDidAppear(animated)
         // * Segue the user if they're already verified * //
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
-        }
-        else if FBSDKAccessToken.current() != nil {
-            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
-        }
+//        if Auth.auth().currentUser != nil {
+//            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
+//        }
+//        else if FBSDKAccessToken.current() != nil {
+//            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
