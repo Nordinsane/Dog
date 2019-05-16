@@ -1,0 +1,3 @@
+# goDog
+A conceptual activity-tracker for Dogs made in xCode with 100% Swift!
+https://camo.githubusercontent.com/9bacc9e3c04cc12ee9bdf9030fee305e4017b19e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d694f532d7265642e737667
