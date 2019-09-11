@@ -18,17 +18,19 @@ class DogEntry {
     var secondTimer: String
     var walking: Bool = false
     var walkArray: [String]
+    var distArray: [String]
     var shareId: String
     var id: String = ""
  
     
-    init(name: String, image: String, firstTimer: String, secondTimer: String, walking: Bool, walkArray: [String], shareId: String) {
+    init(name: String, image: String, firstTimer: String, secondTimer: String, walking: Bool, walkArray: [String], distArray: [String], shareId: String) {
         self.name = name
         self.image = image
         self.firstTimer = firstTimer
         self.secondTimer = secondTimer
         self.walking = walking
         self.walkArray = walkArray
+        self.distArray = distArray
         self.shareId = shareId
    }
     
@@ -40,12 +42,13 @@ class DogEntry {
         secondTimer = snapshotValue["secondTimer"] as! String
         walking = snapshotValue["walking"] as! Bool
         walkArray = snapshotValue["walkArray"] as! [String]
+        distArray = snapshotValue["distArray"] as! [String]
         shareId = snapshotValue["shareId"] as! String
         id = snapshot.documentID
     }
     
     func toAny() -> [String: Any] {
-        return ["name": name, "image": image, "firstTimer": firstTimer, "secondTimer": secondTimer, "walking": walking, "walkArray": walkArray, "shareId": shareId]
+        return ["name": name, "image": image, "firstTimer": firstTimer, "secondTimer": secondTimer, "walking": walking, "walkArray": walkArray, "distArray": distArray, "shareId": shareId]
     }
     
 //    func startTimer() {

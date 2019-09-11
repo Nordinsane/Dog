@@ -12,6 +12,7 @@
 		3B8567332237AF2F00116F2C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567312237AF2E00116F2C /* SignupViewController.swift */; };
 		3B8567342237AF2F00116F2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567322237AF2F00116F2C /* LoginViewController.swift */; };
 		3B8567382237B06400116F2C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8567372237B06400116F2C /* StartViewController.swift */; };
+		3B85728122B67CE1001F7D5C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B85728022B67CE1001F7D5C /* Location.swift */; };
 		3B8E733E223BEB1F00E65684 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8E733D223BEB1F00E65684 /* User.swift */; };
 		3B9929762232C1BF00DCC78E /* MyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9929752232C1BF00DCC78E /* MyDogViewController.swift */; };
 		3B9BB49B2273A8690039510C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B9BB49D2273A8690039510C /* Localizable.strings */; };
@@ -37,6 +38,7 @@
 		3B8567312237AF2E00116F2C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		3B8567322237AF2F00116F2C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3B8567372237B06400116F2C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		3B85728022B67CE1001F7D5C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3B8E733D223BEB1F00E65684 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3B9929752232C1BF00DCC78E /* MyDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogViewController.swift; sourceTree = "<group>"; };
 		3B9BB49C2273A8690039510C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				3BA320B522354DCB00AA0418 /* DogEntry.swift */,
 				3B8E733D223BEB1F00E65684 /* User.swift */,
 				3BE4FBAF224E2D4A00FF24DE /* Item.swift */,
+				3B85728022B67CE1001F7D5C /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +192,11 @@
 				TargetAttributes = {
 					3BE344D3223173C50023F132 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -309,6 +317,7 @@
 			files = (
 				3B8E733E223BEB1F00E65684 /* User.swift in Sources */,
 				3BC9645A2260B96D0083016D /* UserViewController.swift in Sources */,
+				3B85728122B67CE1001F7D5C /* Location.swift in Sources */,
 				3BEBD8732232AFE800FB11E4 /* NewDogViewController.swift in Sources */,
 				3BE344D8223173C50023F132 /* AppDelegate.swift in Sources */,
 				3BE4FBB0224E2D4A00FF24DE /* Item.swift in Sources */,

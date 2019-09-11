@@ -15,7 +15,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     var auth: Auth!
     var storage: Storage!
     var imageSet = false
-    var dogs : Dogs?
+    var dogs: Dogs?
     var thisDog: DogEntry?
 
     @IBOutlet weak var dogNameEntry: UITextField!
@@ -69,19 +69,21 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
             guard let imageData = dogImagePreview.imageView?.image!.jpegData(compressionQuality: 0.5) else {return}
             let uuid = UUID().uuidString
             let imageRef = storageRef.child("images/\(user.uid)/\(uuid).jpg")
-            let uploadTask = imageRef.putData(imageData, metadata: nil) {
-             (metadata, error) in
-                print("uploaded")
-                
-                
-                imageRef.downloadURL {
-                    (url, error) in
+            DispatchQueue.main.async {
+                let uploadTask = imageRef.putData(imageData, metadata: nil) {
+                 (metadata, error) in
+                    print("uploaded")
                     
-                    guard let downloadUrl = url else {return}
-                    if let name = self.dogNameEntry.text {
+                    
+                    imageRef.downloadURL {
+                        (url, error) in
                         
-                        let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""], shareId: "")
-                        dogsRef.addDocument(data: dog.toAny())
+                        guard let downloadUrl = url else {return}
+                        if let name = self.dogNameEntry.text {
+                            
+                            let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""], distArray: [""], shareId: "")
+                            dogsRef.addDocument(data: dog.toAny())
+                        }
                     }
                 }
             }
@@ -94,43 +96,46 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // * CURRENTLY NOT IN USE* //
     @IBAction func addExistingDog(_ sender: UIButton) {
-//        if let dogName = dogNameEntry.text {
-//            guard let user = auth.currentUser else {return}
-//
-//            let storageRef = storage.reference()
-//            let publicRef = db.collection("public-dogs").whereField("shareId", isEqualTo: dogName)
-//            let dogsRef = db.collection("users").document(user.uid).collection("dogs")
-//
-//        }
-//        --------
-//            publicRef.getDocuments { (snapshot, error) in
-//                if error != nil {
-//                    print(error)
-//                    print("BARG")
-//                }
-//                else {
-//                    print(dogName)
-//                    for document in (snapshot?.documents)! {
-//                        if let name = document.data()["name"] as? String {
-//                            if let image = document.data()["image"] as? String {
-//                                if let firstTimer = document.data()["firstTimer"] as? String {
-//                                    if let secondTimer = document.data()["secondTimer"] as? String {
-//                                        if let walking = document.data()["walking"] as? Bool {
-//                                            if let walkArray = document.data()["walkArray"] as? [String] {
-//                                                if let shareId = document.data()["shareId"] as? String {
-//                                                let dog = DogEntry(name: name, image: image, firstTimer: firstTimer, secondTimer: secondTimer, walking: walking, walkArray: walkArray, shareId: shareId)
-//
-//                                                    dogsRef.addDocument(data: dog.toAny())
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-            
-//            --------
+        if let dogName = dogNameEntry.text {
+            guard let user = auth.currentUser else {return}
+
+            let storageRef = storage.reference()
+            let publicRef = db.collection("public-dogs").whereField("shareId", isEqualTo: dogName)
+            let dogsRef = db.collection("users").document(user.uid).collection("dogs")
+
+        
+
+            publicRef.getDocuments { (snapshot, error) in
+                if error != nil {
+                    print(error)
+                    print("BARG")
+                }
+                else {
+                    print(dogName)
+                    for document in (snapshot?.documents)! {
+                        if let name = document.data()["name"] as? String {
+                            if let image = document.data()["image"] as? String {
+                                if let firstTimer = document.data()["firstTimer"] as? String {
+                                    if let secondTimer = document.data()["secondTimer"] as? String {
+                                        if let walking = document.data()["walking"] as? Bool {
+                                            if let walkArray = document.data()["walkArray"] as? [String] {
+                                                    if let distArray = document.data()["distArray"] as? [String] {
+                                                        if let shareId = document.data()["shareId"] as? String {
+                                                        let dog = DogEntry(name: name, image: image, firstTimer: firstTimer, secondTimer: secondTimer, walking: walking, walkArray: walkArray, distArray: distArray, shareId: shareId)
+
+                                                        dogsRef.addDocument(data: dog.toAny())
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     // * Decides wether a Dog can be created or not * //

@@ -132,11 +132,23 @@ class DogTableViewController: UITableViewController {
         if dogs.entry(index: indexPath.row)?.walking == true {
             cell.dogStatusDisplay.text = "Walking"
             cell.dogTimerDisplay.text = dogs.entry(index: indexPath.row)?.firstTimer ?? ""
+            cell.dogTimerDisplay.textColor = UIColor(red:1.00, green:0.45, blue:0.00, alpha:1.0)
         }
         else if dogs.entry(index: indexPath.row)?.walking == false {
             cell.dogTimerDisplay.text = dogs.entry(index: indexPath.row)?.walkArray[0] ?? ""
             cell.dogStatusDisplay.text = "Latest Walk"
+            cell.dogTimerDisplay.textColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0)
         }
+        
+        cell.dogCellDisplay.layer.masksToBounds = false
+        cell.dogCellDisplay.layer.shadowColor = UIColor.black.cgColor
+        cell.dogCellDisplay.layer.shadowOpacity = 0.5
+        cell.dogCellDisplay.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.dogCellDisplay.layer.shadowRadius = 1
+        
+        cell.dogCellDisplay.layer.shadowPath = UIBezierPath(rect: cell.dogCellDisplay.bounds).cgPath
+        cell.dogCellDisplay.layer.shouldRasterize = true
+        cell.dogCellDisplay.layer.rasterizationScale = 1
         
         cell.dogCellDisplay.layer.cornerRadius = cell.dogCellDisplay.frame.height/2
         cell.dogCellDisplay.layer.shadowPath = UIBezierPath(rect: cell.dogCellDisplay.bounds).cgPath
@@ -168,7 +180,6 @@ class DogTableViewController: UITableViewController {
         }catch{
             print("Error")
         }
-        
         do {
             FBSDKAccessToken.setCurrent(nil)
             FBSDKProfile.setCurrent(nil)
@@ -177,8 +188,7 @@ class DogTableViewController: UITableViewController {
         }catch{
             print("Error")
         }
-
-        guard(navigationController?.popToRootViewController(animated: true)) != nil
+    guard(navigationController?.popToRootViewController(animated: true)) != nil
             else {return}
     }
     

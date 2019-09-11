@@ -11,6 +11,7 @@ import UIKit
 class WalkHistoryTableCell: UITableViewCell {
 
     @IBOutlet weak var timeDisplay: UILabel!
+    @IBOutlet weak var distanceDisplay: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

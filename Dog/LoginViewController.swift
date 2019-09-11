@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailField.text = ""
         passwordField.text = ""
         super.viewDidAppear(animated)
-        // * Segue the user if they're already verified * //
+//         * Segue the user if they're already verified * //
 //        if Auth.auth().currentUser != nil {
 //            self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
 //        }
@@ -117,5 +117,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
