@@ -70,6 +70,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
             let uuid = UUID().uuidString
             let imageRef = storageRef.child("images/\(user.uid)/\(uuid).jpg")
             DispatchQueue.main.async {
+                
                 let uploadTask = imageRef.putData(imageData, metadata: nil) {
                  (metadata, error) in
                     print("uploaded")
