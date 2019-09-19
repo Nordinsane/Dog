@@ -1,5 +1,5 @@
 # goDog
-A conceptual activity-tracker for Dogs made in xCode with 100% Swift!
+goDog is an iOS application developed in xCode using Swift. The app allow users to assign dogs to an account where each dog has their own timer which saves them as "Walks" in a Firestore Database. goDog was my contribution to the final thesis of our one-month iOS Database exercise.
 
 ## Getting Started
 You will need a mac running the latest xCode before pulling the project.  
@@ -11,5 +11,3 @@ Pull the latest goDog version from github:
 $ cd your-directory
 $ git pull ssh-link
 ```
-## What is it?
-goDog is an iOS application developed in xCode using Swift. The app allow users to assign dogs to an account where each dog has their own timer which saves them as "Walks" in a Firestore Database. goDog was my contribution to the final thesis of our one-month iOS Database exercise.
