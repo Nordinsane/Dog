@@ -14,3 +14,23 @@ Pull the latest goDog version from github:
 $ cd your-directory
 $ git pull ssh-link
 ```
+
+### Requirements
+The App relies on Firebase to handle users.  
+Install the framworks with the following command:
+```
+$ cd your-directory
+$ pod install
+```
+
+#### Error!
+If you don't have a podfile open Terminal and run:
+```
+$ pod init
+```
+A Podfile will appear in your directory, open it.  
+Specify the pods you want to install:
+```
+pod 'Firebase/Core'
+```
+Return to [Requirements](#Requirements)
