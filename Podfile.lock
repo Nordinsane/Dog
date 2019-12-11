@@ -139,6 +139,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - SDWebImage (5.3.2):
+    - SDWebImage/Core (= 5.3.2)
+  - SDWebImage/Core (5.3.2)
 
 DEPENDENCIES:
   - FacebookCore
@@ -149,9 +152,10 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Bolts
     - BoringSSL-GRPC
     - FacebookCore
@@ -177,6 +181,8 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+  trunk:
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -204,7 +210,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
 
-PODFILE CHECKSUM: 3dcffa0e91aa499d3aa49a8d61329174598ed4f9
+PODFILE CHECKSUM: 6aa2bf96898fb1ae69a73ce2c7f75686aab1a762
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.8.4

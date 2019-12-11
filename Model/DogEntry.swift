@@ -20,10 +20,11 @@ class DogEntry {
     var walkArray: [String]
     var distArray: [String]
     var shareId: String
+    var shared: Bool
     var id: String = ""
  
     
-    init(name: String, image: String, firstTimer: String, secondTimer: String, walking: Bool, walkArray: [String], distArray: [String], shareId: String) {
+    init(name: String, image: String, firstTimer: String, secondTimer: String, walking: Bool, walkArray: [String], distArray: [String], shareId: String, shared: Bool) {
         self.name = name
         self.image = image
         self.firstTimer = firstTimer
@@ -32,6 +33,7 @@ class DogEntry {
         self.walkArray = walkArray
         self.distArray = distArray
         self.shareId = shareId
+        self.shared = shared
    }
     
     init(snapshot: QueryDocumentSnapshot) {
@@ -44,11 +46,12 @@ class DogEntry {
         walkArray = snapshotValue["walkArray"] as! [String]
         distArray = snapshotValue["distArray"] as! [String]
         shareId = snapshotValue["shareId"] as! String
+        shared = snapshotValue["shared"] as! Bool
         id = snapshot.documentID
     }
     
     func toAny() -> [String: Any] {
-        return ["name": name, "image": image, "firstTimer": firstTimer, "secondTimer": secondTimer, "walking": walking, "walkArray": walkArray, "distArray": distArray, "shareId": shareId]
+        return ["name": name, "image": image, "firstTimer": firstTimer, "secondTimer": secondTimer, "walking": walking, "walkArray": walkArray, "distArray": distArray, "shareId": shareId, "shared": shared]
     }
     
 //    func startTimer() {

@@ -28,6 +28,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         
         dogImagePreview.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.0)
+        dogNameEntry.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
         blur()
         
         storage = Storage.storage()
@@ -82,7 +83,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
                         guard let downloadUrl = url else {return}
                         if let name = self.dogNameEntry.text {
                             
-                            let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""], distArray: [""], shareId: "")
+                            let dog = DogEntry(name: name, image: downloadUrl.absoluteString, firstTimer: "", secondTimer: "", walking: false, walkArray: [""], distArray: [""], shareId: "", shared: false)
                             dogsRef.addDocument(data: dog.toAny())
                         }
                     }
@@ -109,7 +110,6 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
             publicRef.getDocuments { (snapshot, error) in
                 if error != nil {
                     print(error)
-                    print("BARG")
                 }
                 else {
                     print(dogName)
@@ -122,7 +122,7 @@ class NewDogViewController: UIViewController, UIImagePickerControllerDelegate, U
                                             if let walkArray = document.data()["walkArray"] as? [String] {
                                                     if let distArray = document.data()["distArray"] as? [String] {
                                                         if let shareId = document.data()["shareId"] as? String {
-                                                        let dog = DogEntry(name: name, image: image, firstTimer: firstTimer, secondTimer: secondTimer, walking: walking, walkArray: walkArray, distArray: distArray, shareId: shareId)
+                                                        let dog = DogEntry(name: name, image: image, firstTimer: firstTimer, secondTimer: secondTimer, walking: walking, walkArray: walkArray, distArray: distArray, shareId: shareId, shared: true)
 
                                                         dogsRef.addDocument(data: dog.toAny())
                                                     }

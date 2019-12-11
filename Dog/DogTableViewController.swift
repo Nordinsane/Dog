@@ -31,8 +31,8 @@ class DogTableViewController: UITableViewController {
 
         guard let user = auth.currentUser else {return}
 
+        let publicRef = db.collection("public-dogs")
         let dogsRef = db.collection("users").document(user.uid).collection("dogs")
-        
         dogsRef.addSnapshotListener() {
             (snapshot, err) in
             self.dogs.clearDog()
@@ -137,7 +137,7 @@ class DogTableViewController: UITableViewController {
         else if dogs.entry(index: indexPath.row)?.walking == false {
             cell.dogTimerDisplay.text = dogs.entry(index: indexPath.row)?.walkArray[0] ?? ""
             cell.dogStatusDisplay.text = "Latest Walk"
-            cell.dogTimerDisplay.textColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0)
+            cell.dogTimerDisplay.textColor = UIColor(named: "DarkLightText")
         }
         
         cell.dogCellDisplay.layer.masksToBounds = false
