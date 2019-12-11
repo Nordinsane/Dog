@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import CoreMotion
+import SDWebImage
 
 class MyDogViewController: UIViewController, UITableViewDataSource {
 
@@ -39,6 +40,18 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
     
     // * Checks if the dog is walking or not, since the timer button should conform to that with "Start"-ing or "Stop"-ing * //
     // * At the end of an action the Database values are updated * //
+    
+    func random(length: Int = 10) -> String {
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        print(randomString)
+        return randomString
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,17 +94,18 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
 //        // * Get the image by URL and set it as the background * //
         if let image = dogimage {
             guard let url = URL(string: image) else {print("bad url"); return}
-            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-
-                if error != nil {
-                    print(error!)
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    self.dogImage.image = UIImage(data: data!)
-                }
-            }).resume()
+            dogImage.sd_setImage(with: url, completed: .none)
+//            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+//
+//                if error != nil {
+//                    print(error!)
+//                    return
+//                }
+//
+//                DispatchQueue.main.async {
+//                    self.dogImage.image = UIImage(data: data!)
+//                }
+//            }).resume()
         }
     }
     
@@ -262,20 +276,48 @@ class MyDogViewController: UIViewController, UITableViewDataSource {
     
     // * CURRENTLY NOT IN USE * //
     @IBAction func shareDog(_ sender: UIButton) {
-        if thisDog?.shareId == "" {
+        if thisDog?.shareId == "" && thisDog?.shared == false {
             guard let user = auth.currentUser else {return}
             let publicRef = db.collection("public-dogs")
             let uuid = UUID().uuidString
 
             if let dogId = thisDog?.id {
-
+                thisDog?.shared = true
                 let dogsRef = db.collection("users").document(user.uid).collection("dogs").document(dogId)
                 dogsRef.updateData(["shareId" : uuid])
-                let dog = DogEntry(name: thisDog?.name ?? "", image: thisDog?.image ?? "", firstTimer: thisDog?.firstTimer ?? "", secondTimer: thisDog?.secondTimer ?? "", walking: thisDog?.walking ?? false, walkArray: thisDog?.walkArray ?? [""], distArray: thisDog?.distArray ?? [""], shareId: uuid)
+                let dog = DogEntry(name: thisDog?.name ?? "", image: thisDog?.image ?? "", firstTimer: thisDog?.firstTimer ?? "", secondTimer: thisDog?.secondTimer ?? "", walking: thisDog?.walking ?? false, walkArray: thisDog?.walkArray ?? [""], distArray: thisDog?.distArray ?? [""], shareId: uuid, shared: true)
 
                 publicRef.addDocument(data: dog.toAny())
+                guard let name = thisDog?.name else {
+                    return
+                }
+                
+                let alert = UIAlertController(title: "\(name) shared!", message: "Access Code: \(uuid)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Copy ID", style: .default, handler: { action in
+                    self.copyToClipboard(text: uuid)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
         }
+        else {
+            guard let name = thisDog?.name else {
+                return
+            }
+            guard let id = thisDog?.shareId else {
+                return
+            }
+            let alert = UIAlertController(title: "\(name) shared!", message: "Access Code: \(id)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Copy ID", style: .default, handler: { action in
+                self.copyToClipboard(text: id)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func copyToClipboard(text: String) {
+        UIPasteboard.general.string = text
     }
     
     // * Apply blur to specific view * //

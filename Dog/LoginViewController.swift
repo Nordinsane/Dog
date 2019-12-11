@@ -67,6 +67,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        emailField.attributedPlaceholder = NSAttributedString(string: "E-Mail", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
+        passwordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 0.45)])
+        
         loginButton.backgroundColor = UIColor(red: 255/255, green: 116/255, blue: 0/255, alpha: 0.8)
         facebookLogin.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 0.8)
         signUpButton.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
